@@ -30,6 +30,17 @@ router.get("/", function(req, res, next) {
   });
 });
 
+router.get('/login', passport.authenticate('github'))
+
+router.get('/auth', passport.authenticate('github', {
+  successRedirect: '/',
+  failureRedirect: '/loginFailed'
+}))
+
+router.get('/favorites', (req, res) => {
+  res.json(req.user.displayName)
+})
+
 router.get("/movie/:id", (req, res, next) => {
   // res.json(req.params.id)
   const movieId = req.params.id;

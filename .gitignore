@@ -1,1 +1,4 @@
 node_modules
+
+# Config file with client Id, client secret and callback URL
+config.js
